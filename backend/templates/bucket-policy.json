@@ -1,0 +1,20 @@
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1561729181822",
+    "Statement": [
+        {
+            "Sid": "Stmt1561729179238",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": [
+                    "arn:aws:iam::${account_id}:root"
+                ]
+            },
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::${name}",
+                "arn:aws:s3:::${name}/*"
+            ]
+        }
+    ]
+}
