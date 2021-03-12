@@ -14,4 +14,16 @@ module "vpc" {
 
   tags = local.tags
 }
-  
+
+module "ecs" {
+  source  = "terraform-aws-modules/ecs/aws"
+  version = "2.8.0"
+
+  name = local.project
+
+  capacity_providers = ["FARGATE"]
+
+  default_capacity_provider_strategy = [{ capacity_provider = "FARGATE" }]
+
+  tags = local.tags
+}

@@ -7,3 +7,7 @@ output "vpc_public_subnets" {
   description = "VPC Public Subnets"
   value       = module.vpc.public_subnets
 }
+
+output "ecs_cluster" {
+  value = module.ecs
+}

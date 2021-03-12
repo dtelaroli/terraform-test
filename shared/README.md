@@ -12,22 +12,23 @@ Use [aws-vault](https://github.com/99designs/aws-vault) to manage your credentia
 
 ## Resources
 
-| Name |
-| ---- |
+| Name                                                                                     |
+| ---------------------------------------------------------------------------------------- |
 | [module.vpc](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest) |
 
 ## Variables
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| region | Default region us-east-1 | string | us-east-1 | no |
+| Name   | Description              | Type   | Default   | Required |
+| ------ | ------------------------ | ------ | --------- | :------: |
+| region | Default region us-east-1 | string | us-east-1 |    no    |
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
+| Name                | Description            |
+| ------------------- | ---------------------- |
 | vpc_private_subnets | VPC Private Subnet IDs |
-| vpc_public_subnets | VPC Public Subnet IDs |
+| vpc_public_subnets  | VPC Public Subnet IDs  |
+| ecs_cluster         | ECS Cluster data       |
 
 ## Deploy
 
