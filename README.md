@@ -1,6 +1,6 @@
 # Terraform Test
 
-Project with a POC with Terraform IaC. It includes a ECS service running Nginx container and Cognito Authorization.
+POC Project with Terraform IaC. It includes a ECS service running Nginx container and Cognito Authorization.
 
 ## AWS credentials
 
@@ -15,6 +15,11 @@ Use [aws-vault](https://github.com/99designs/aws-vault) to manage your credentia
 | [modules](./modules/README.md)           | resources to configure terraform S3 remote state and lock table |
 | [applications](./applications/README.md) | resources to configure terraform S3 remote state and lock table |
 
+## Requirements
+
+- [terraform cli](https://www.terraform.io/docs/cli/index.html) ([tfswitch](https://tfswitch.warrensbox.com) it's a good option)
+- [go](https://golang.org)
+
 ## Deployment
 
 There is a order to apply all resources:
@@ -24,6 +29,8 @@ There is a order to apply all resources:
 1. applications
 
 ```
+aws-vault exec <your-profile> -d 12h --
+
 cd backend
 terraform init
 terraform plan -out plan.apply
@@ -40,6 +47,21 @@ cd applications/nginx-app
 terraform init
 terraform plan -out plan.apply
 terraform apply plan.apply
+
+cd -
+```
+
+## Testing
+
+There is a basic test in test folder.
+
+### Running tests
+
+```
+aws-vault exec <your-profile> -d 12h --
+
+cd test
+go test
 
 cd -
 ```
@@ -55,19 +77,19 @@ There is a order to destroy all resources:
 ```
 cd applications/nginx-app
 terraform init
-terraform plan -out plan.destroy
+terraform plan -out plan.destroy -destroy
 terraform apply plan.destroy
 
 cd -
 cd shared
 terraform init
-terraform plan -out plan.destroy
+terraform plan -out plan.destroy -destroy
 terraform apply plan.destroy
 
 cd -
 cd backend
 terraform init
-terraform plan -out plan.destroy
+terraform plan -out plan.destroy -destroy
 terraform apply plan.destroy
 
 cd -
