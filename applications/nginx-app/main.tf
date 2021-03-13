@@ -1,7 +1,7 @@
 module "service" {
   source             = "../../modules/ecs-service"
-  name               = local.project
-  log_name           = "/aws/ecs/${local.project}"
+  name               = "${local.project}-${local.env}"
+  log_name           = "/aws/ecs/${local.project}-${local.env}"
   desired_count      = local.desired_count
   cluster_id         = local.cluster_id
   region             = local.region
@@ -28,7 +28,7 @@ module "ecs_sg" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "3.18.0"
 
-  name        = "${local.project}-ecs"
+  name        = "${local.project}-${local.env}-ecs"
   vpc_id      = local.vpc_id
   description = "Security group with open port for ECS (${local.container_port}) from ALB, egress ports are all world open"
 
@@ -59,7 +59,7 @@ module "iam_assumable_role" {
     "ecs-tasks.amazonaws.com"
   ]
 
-  role_name         = "${local.project}-execution-role"
+  role_name         = "${local.project}-${local.env}-execution-role"
   create_role       = true
   role_requires_mfa = false
 

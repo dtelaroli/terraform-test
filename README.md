@@ -100,4 +100,4 @@ cd -
 ## Roadmap
 
 - Add [moto](https://github.com/gruntwork-io/terratest/tree/master/test-docker-images/moto) for mocked tests
-- 
+- Add ECR Repository to build a custom image
