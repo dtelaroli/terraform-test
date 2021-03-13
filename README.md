@@ -2,6 +2,10 @@
 
 POC Project with Terraform IaC. It includes a ECS service running Nginx container and Cognito Authorization.
 
+## Architecture
+
+![diagram](./docs/architecture.png)
+
 ## AWS credentials
 
 Use [aws-vault](https://github.com/99designs/aws-vault) to manage your credentials or another of your preference.
