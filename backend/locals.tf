@@ -6,7 +6,7 @@ locals {
   env        = "shared"
   project    = "ecs-test-backend"
 
-  bucket_name = "${local.project}-devops"
+  bucket_name = "${local.project}-devops-state"
 
   tags = {
     Name        = local.project

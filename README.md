@@ -45,6 +45,8 @@ terraform apply plan.apply
 cd -
 cd applications/nginx-app
 terraform init
+terraform workspace new stg
+terraform workspace new prd
 terraform plan -out plan.apply
 terraform apply plan.apply
 

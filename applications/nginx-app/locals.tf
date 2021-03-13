@@ -5,9 +5,9 @@ data "terraform_remote_state" "shared" {
 
   config = {
     region         = var.region
-    bucket         = "ecs-test-backend-devops"
+    bucket         = "ecs-test-backend-devops-state"
     key            = "shared/terraform.tfstate"
-    dynamodb_table = "ecs-test-backend-lock"
+    dynamodb_table = "ecs-test-backend-devops-lock"
   }
 }
 

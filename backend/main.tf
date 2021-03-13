@@ -32,7 +32,7 @@ resource "aws_s3_bucket_public_access_block" "this" {
 }
 
 resource "aws_dynamodb_table" "this" {
-  name         = "${local.project}-lock"
+  name         = "${local.project}-devops-lock"
   hash_key     = "LockID"
   billing_mode = "PAY_PER_REQUEST"
 
