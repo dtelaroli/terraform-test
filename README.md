@@ -96,3 +96,8 @@ terraform apply plan.destroy
 
 cd -
 ```
+
+## Roadmap
+
+- Add [moto](https://github.com/gruntwork-io/terratest/tree/master/test-docker-images/moto) for mocked tests
+- 
