@@ -12,37 +12,42 @@ Use [aws-vault](https://github.com/99designs/aws-vault) to manage your credentia
 
 ## Resources
 
-| Name                                                                                                                    |
-| ----------------------------------------------------------------------------------------------------------------------- |
-| [module.vpc](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest)                                |
-| [module.ecs](https://registry.terraform.io/modules/terraform-aws-modules/ecs/aws/latest)                                |
-| [module.public_alb](https://registry.terraform.io/modules/terraform-aws-modules/alb/aws/latest)                         |
-| [module.acm](https://registry.terraform.io/modules/terraform-aws-modules/acm/aws/latest)                                |
-| [module.alb_http_sg](https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest)             |
-| [module.alb_https_sg](https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest)            |
-| [module.cognito](https://registry.terraform.io/modules/mineiros-io/cognito-user-pool/aws/latest/examples/complete)      |
-| [module.aws_route53_record](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) |
+| Name                                                                                                                         |
+| ---------------------------------------------------------------------------------------------------------------------------- |
+| [aws_cloudwatch_log_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) |
+| [aws_ecs_task_definition](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_task_definition)   |
+| [aws_ecs_service](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_service)                   |
 
 ## Variables
 
-| Name   | Description              | Type   | Default   | Required |
-| ------ | ------------------------ | ------ | --------- | :------: |
-| region | Default region us-east-1 | string | us-east-1 |    no    |
+| Name                               | Description                           | Type         |  Default  | Required |
+| ---------------------------------- | ------------------------------------- | ------------ | :-------: | :------: |
+| region                             | AWS Region                            | string       | us-east-1 |    no    |
+| log_name                           | CloudWatch log group                  | string       |     -     |   yes    |
+| name                               | Service and task name                 | string       |     -     |   yes    |
+| log_retention_in_days              | CloudWatch log retention in days      | number       |    180    |    no    |
+| desired_count                      | ECS task desired count                | number       |     1     |    no    |
+| image                              | Docker image url with tag             | string       |     -     |   yes    |
+| cluster_id                         | ECS cluster id                        | string       |     -     |   yes    |
+| deployment_minimum_healthy_percent | Service deployment minimum percentege | number       |    100    |    no    |
+| deployment_maximum_percent         | Service deployment maximum percentege | number       |    200    |    no    |
+| container_port                     | Task container port                   | number       |     -     |   yes    |
+| port_mappings                      | Task port mappings                    | list(any)    |     -     |   yes    |
+| environment                        | Container environment variables       | list(any)    |   null    |    no    |
+| secrets                            | Container secrets variables           | list(any)    |   null    |    no    |
+| subnet_ids                         | VPC subnet IDs                        | list(string) |     -     |   yes    |
+| target_group_arn                   | Load balancer target group ARN        | string       |     -     |   yes    |
+| security_group_ids                 | Load balancer security group IDs      | list(string) |     -     |   yes    |
+| memory                             | Container memory reservation          | number       |     -     |   yes    |
+| cpu                                | Container cpu reservation             | number       |     -     |   yes    |
+| role_arn                           | Role ARN                              | string       |     -     |   yes    |
+| tags                               | Billing tags                          | map(string)  |     -     |   yes    |
 
 ## Outputs
 
-| Name                | Description                      |
-| ------------------- | -------------------------------- |
-| vpc_id              | VPC ID                           |
-| vpc_private_subnets | VPC Private Subnet IDs           |
-| vpc_public_subnets  | VPC Public Subnet IDs            |
-| ecs_cluster         | ECS Cluster data                 |
-| acm_certificate     | ACM Certificate                  |
-| public_alb          | Public Application Load Balancer |
-| cognito             | Cognito User Pool                |
-| ecs_cluster         | ECS Cluster data                 |
-| alb_security_group  | ALB Security Group               |
-| url                 | Load Balancer URL                |
+| Name            | Description     |
+| --------------- | --------------- |
+| task_definition | Task Definition |
 
 ## Deploy
 
