@@ -1,4 +1,6 @@
 resource "aws_s3_bucket" "this" {
+  # checkov:skip=CKV_AWS_18:Skip for simple configuration
+  # checkov:skip=CKV_AWS_52:Skip for simple configuration
   bucket = local.bucket_name
   acl    = "private"
 
@@ -28,10 +30,14 @@ resource "aws_s3_bucket" "this" {
 resource "aws_s3_bucket_public_access_block" "this" {
   bucket = aws_s3_bucket.this.id
 
-  block_public_policy = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+  block_public_acls       = true
+  block_public_policy     = true
 }
 
 resource "aws_dynamodb_table" "this" {
+  # checkov:skip=CKV_AWS_28:Skip for save money
   name         = "${local.project}-devops-lock"
   hash_key     = "LockID"
   billing_mode = "PAY_PER_REQUEST"
