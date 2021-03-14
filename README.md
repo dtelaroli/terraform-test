@@ -16,8 +16,8 @@ Use [aws-vault](https://github.com/99designs/aws-vault) to manage your credentia
 | ---------------------------------------- | --------------------------------------------------------------- |
 | [backend](./backend/README.md)           | resources to configure terraform S3 remote state and lock table |
 | [shared](./shared/README.md)             | shared resources used by applications                           |
-| [modules](./modules/README.md)           | resources to configure terraform S3 remote state and lock table |
-| [applications](./applications/README.md) | resources to configure terraform S3 remote state and lock table |
+| [modules](./modules/README.md)           | reusable modules                                                |
+| [applications](./applications/README.md) | you find all applications here                                  |
 
 ## Requirements
 
