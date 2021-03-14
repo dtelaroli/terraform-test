@@ -24,6 +24,7 @@ Use [aws-vault](https://github.com/99designs/aws-vault) to manage your credentia
 - [terraform cli 0.14.8](https://www.terraform.io/docs/cli/index.html) ([tfswitch](https://tfswitch.warrensbox.com) it's a good option)
 - [checkov](https://www.checkov.io)
 - [go](https://golang.org)
+- [terratest](https://terratest.gruntwork.io/docs/)
 
 ## Deployment
 
