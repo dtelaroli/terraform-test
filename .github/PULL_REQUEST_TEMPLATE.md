@@ -1,7 +1,7 @@
 ## Checklist
 
 - [ ] Have used `terraform fmt --recursive` to format files
-- [ ] Have used `checkov -d .` to security and quality verifications
+- [ ] Have used `checkov --quiet -d .` to security and quality verifications
 - [ ] Fill rightly the Pull Request description
 
 ## What this pull request does?
