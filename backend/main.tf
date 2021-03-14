@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "this" {
   force_destroy = true
 
   policy = templatefile("${path.module}/templates/bucket-policy.json", {
-    name      = local.bucket_name
+    name       = local.bucket_name
     account_id = local.account_id
   })
 
