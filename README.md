@@ -21,7 +21,8 @@ Use [aws-vault](https://github.com/99designs/aws-vault) to manage your credentia
 
 ## Requirements
 
-- [terraform cli](https://www.terraform.io/docs/cli/index.html) ([tfswitch](https://tfswitch.warrensbox.com) it's a good option)
+- [terraform cli 0.14.8](https://www.terraform.io/docs/cli/index.html) ([tfswitch](https://tfswitch.warrensbox.com) it's a good option)
+- [checkov](https://www.checkov.io)
 - [go](https://golang.org)
 
 ## Deployment
@@ -60,6 +61,24 @@ cd -
 ## Testing
 
 There is a basic test in test folder.
+
+## Verifications
+
+### Terraform fmt
+
+```
+terraform fmt --recursive
+```
+
+### Checkov
+
+```
+# with local installation
+checkov -d .
+
+# with docker
+docker run -v $(pwd):/data --rm -it bridgecrew/checkov -d /data --quiet
+```
 
 ### Running tests
 
@@ -105,3 +124,4 @@ cd -
 
 - Add [moto](https://github.com/gruntwork-io/terratest/tree/master/test-docker-images/moto) for mocked tests
 - Add ECR Repository to build a custom image
+- Automated plan/apply with Atlantis or Github Actions
